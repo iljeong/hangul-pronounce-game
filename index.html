@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fff9e9" />
+    <meta name="description" content="한글 단어를 또박또박 말하며 벽을 부수는 발음 연습 게임" />
+    <title>또박 또박 | 한글 발음 게임</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="game-shell" data-phase="ready" aria-labelledby="game-title">
+      <video id="camera-feed" class="camera-feed" autoplay muted playsinline aria-label="선택한 카메라 화면"></video>
+      <div class="scene-light" aria-hidden="true"></div>
+      <div class="campus-horizon" aria-hidden="true">
+        <span class="cloud cloud-one"></span><span class="cloud cloud-two"></span>
+        <span class="hill hill-left"></span><span class="hill hill-right"></span>
+        <span class="tree tree-left"></span><span class="tree tree-right"></span>
+      </div>
+
+      <section class="top-panel" aria-label="게임 진행 상황">
+        <div class="top-line">
+          <p id="progress-text" class="progress-text">1 / 5</p>
+          <button id="camera-button" class="camera-button" type="button" aria-pressed="false" aria-label="카메라 켜기">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 7.5h9A2.5 2.5 0 0 1 16 10v7a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 2 17v-7a2.5 2.5 0 0 1 2.5-2.5Zm12.8 3.19 3.56-2.02A.75.75 0 0 1 22 9.33v8.34a.75.75 0 0 1-1.14.66l-3.56-2.02v-5.62Z" /></svg>
+          </button>
+        </div>
+        <ol id="progress-dots" class="progress-dots" aria-label="5개 단어 진행 상태"></ol>
+        <p id="instruction" class="instruction">마이크를 누르고 단어를 말해 보세요</p>
+      </section>
+
+      <section class="game-stage" aria-describedby="instruction game-status">
+        <h1 id="game-title" class="sr-only">또박 또박 한글 발음 게임</h1>
+        <div class="success-badge" id="success-badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="m5 12.5 4.2 4.2L19.5 6.5" /></svg>
+        </div>
+        <div class="word-wall" id="word-wall" aria-live="off">
+          <p id="word" class="target-word">가족</p>
+        </div>
+        <div class="road" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+      </section>
+
+      <div id="confetti" class="confetti" aria-hidden="true"></div>
+      <p id="game-status" class="status" role="status" aria-live="polite">첫 단어는 가족이에요.</p>
+
+      <button id="mic-button" class="mic-button" type="button" aria-label="가족 말하기">
+        <span class="mic-disc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 14.5a3.5 3.5 0 0 0 3.5-3.5V6a3.5 3.5 0 0 0-7 0v5a3.5 3.5 0 0 0 3.5 3.5Zm-6-4v.75a6 6 0 0 0 12 0v-.75M12 17.25V21m-3 0h6" /></svg></span>
+        <span id="mic-label">말하기</span>
+        <span class="sound-waves" aria-hidden="true"><i></i><i></i><i></i></span>
+      </button>
+
+      <section id="complete-panel" class="complete-panel" hidden aria-labelledby="complete-title">
+        <div class="complete-card">
+          <span class="complete-check" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.2 4.2L19.5 6.5" /></svg></span>
+          <h2 id="complete-title">다섯 단어를 모두<br />또박또박 말했어요!</h2>
+          <p>가족 · 바닥 · 수학 · 사막 · 가격</p>
+          <button id="restart-button" type="button" class="restart-button">처음부터 다시 하기</button>
+        </div>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>

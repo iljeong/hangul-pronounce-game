@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>또박 또박 | 컴포넌트 쇼케이스</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body { padding: var(--space-6); background: linear-gradient(135deg, #f3e5d0, #d7eff1); }
+      .showcase { width: min(100%, 1120px); margin: 0 auto; }
+      .showcase h1 { font-size: clamp(1.75rem, 5vw, 2.5rem); word-break: keep-all; }
+      .showcase-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-6); }
+      .showcase-card { padding: var(--space-5); border-radius: var(--radius-panel); background: var(--cream); box-shadow: 0 18px 34px rgb(89 67 45 / .16); }
+      .showcase-card h2 { margin: 0 0 var(--space-4); font-size: 1rem; }
+      .mini-panel { padding: var(--space-4); border-radius: var(--radius-small); background: linear-gradient(145deg, #fffdf4, #fff4d9); }
+      .mini-dots { display: flex; gap: var(--space-2); margin-top: var(--space-3); } .mini-dots i { width: 12px; height: 12px; border-radius: 50%; background: rgb(49 43 40 / .13); } .mini-dots i:first-child { background: var(--success); } .mini-dots i:nth-child(2) { background: var(--coral); transform: scale(1.25); }
+      .mini-wall { display: grid; min-height: 150px; place-items: center; border-radius: var(--radius-small); background: linear-gradient(90deg, transparent 49%, rgb(87 35 29 / .42) 50%, transparent 51%), linear-gradient(var(--brick-light), var(--brick) 56%, var(--brick-dark)); background-size: 68px 34px, 100% 100%; color: var(--cream); font-family: "Black Han Sans", sans-serif; font-size: 3.5rem; text-shadow: 0 4px 0 rgb(107 51 36 / .56); }
+      .action-row { display: flex; align-items: center; gap: var(--space-4); } .action-row .mic-button { justify-self: start; }
+    </style>
+  </head>
+  <body>
+    <main class="showcase">
+      <h1>또박 또박 컴포넌트 상태</h1>
+      <div class="showcase-grid">
+        <section class="showcase-card"><h2>진행 패널: 현재 문항</h2><div class="mini-panel"><strong>2 / 5</strong><div class="mini-dots"><i></i><i></i><i></i><i></i><i></i></div><p>마이크를 누르고 단어를 말해 보세요</p></div></section>
+        <section class="showcase-card"><h2>단어 벽: 기본</h2><div class="mini-wall">수학</div></section>
+        <section class="showcase-card"><h2>마이크: 대기</h2><div class="action-row"><button class="mic-button" type="button" aria-label="발음 듣기"><span class="mic-disc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 14.5a3.5 3.5 0 0 0 3.5-3.5V6a3.5 3.5 0 0 0-7 0v5a3.5 3.5 0 0 0 3.5 3.5Zm-6-4v.75a6 6 0 0 0 12 0v-.75M12 17.25V21m-3 0h6" /></svg></span><span>말하기</span></button><p>탭 또는 Enter로 시작</p></div></section>
+      </div>
+    </main>
+  </body>
+</html>
