@@ -86,14 +86,14 @@ function passRound() {
   setStatus(`${currentWord()} 발음에 성공했어요.`);
   makeConfetti();
 
-  window.setTimeout(() => {
+  setTimeout(() => {
     index += 1;
     if (index === WORDS.length) {
       finishGame();
       return;
     }
     wall.style.visibility = "hidden";
-    window.setTimeout(() => {
+    setTimeout(() => {
       wall.style.visibility = "visible";
       micButton.disabled = false;
       renderRound();
@@ -111,7 +111,7 @@ function retry(transcript) {
 }
 
 function normalize(value) {
-  return value.replace(/\s/g, "").replace(/[.?!,]/g, "");
+  return value.replace(/[\s.?!,]/g, "");
 }
 
 function listen() {
