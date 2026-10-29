@@ -37,6 +37,14 @@
         <div class="success-badge" id="success-badge" aria-hidden="true">
           <svg viewBox="0 0 24 24"><path d="m5 12.5 4.2 4.2L19.5 6.5" /></svg>
         </div>
+        <div class="mascot" aria-hidden="true">
+          <span class="mascot-head">
+            <span class="mascot-eye mascot-eye-left"></span>
+            <span class="mascot-eye mascot-eye-right"></span>
+            <span class="mascot-mouth"></span>
+          </span>
+          <span class="mascot-body"></span>
+        </div>
         <div class="word-wall" id="word-wall" aria-live="off">
           <p id="word" class="target-word">가족</p>
         </div>
@@ -54,7 +62,17 @@
 
       <section id="complete-panel" class="complete-panel" hidden aria-labelledby="complete-title">
         <div class="complete-card">
-          <span class="complete-check" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.2 4.2L19.5 6.5" /></svg></span>
+          <div class="mascot" aria-hidden="true">
+            <span class="mascot-head">
+              <span class="mascot-eye mascot-eye-left"></span>
+              <span class="mascot-eye mascot-eye-right"></span>
+              <span class="mascot-mouth"></span>
+            </span>
+            <span class="mascot-body">
+              <span class="mascot-arm mascot-arm-left"></span>
+              <span class="mascot-arm mascot-arm-right"></span>
+            </span>
+          </div>
           <h2 id="complete-title">다섯 단어를 모두<br />또박또박 말했어요!</h2>
           <p>가족 · 바닥 · 수학 · 사막 · 가격</p>
           <button id="restart-button" type="button" class="restart-button">처음부터 다시 하기</button>

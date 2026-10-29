@@ -1,17 +1,21 @@
 :root {
-  --sky-top: #8fc9f2;
-  --sky-bottom: #ddf2f2;
-  --cream: #fff9e9;
-  --cream-shade: #f1e8d4;
-  --ink: #312b28;
+  --sky-top: #4fa8f7;
+  --sky-bottom: #bdeefb;
+  --cream: #fffdf5;
+  --cream-shade: #ffe9a8;
+  --ink: #221e1a;
   --ink-muted: #685d55;
-  --brick-light: #d97b59;
-  --brick: #b94f38;
-  --brick-dark: #8c342a;
-  --road: #3b3d42;
-  --leaf: #63b76b;
-  --success: #3bbf5b;
-  --coral: #ff866f;
+  --brick-light: #ff8a5b;
+  --brick: #ff5a36;
+  --brick-dark: #c43a1f;
+  --road: #2b2e36;
+  --leaf: #3ddc73;
+  --success: #2ecc58;
+  --coral: #ff4d6d;
+  --mascot-head: #ffb300;
+  --mascot-head-light: #ffd34d;
+  --mascot-body: #2ba7f0;
+  --mascot-body-light: #57c7ff;
   --white: #fff;
   --space-2: 8px;
   --space-3: 12px;
@@ -227,9 +231,48 @@ button:focus-visible {
   transition: opacity var(--duration-micro) var(--ease-emphasis), transform var(--duration-standard) var(--ease-emphasis);
 }
 
-.success-badge svg,
-.complete-check svg { width: 42px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 3.2; }
+.success-badge svg { width: 42px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 3.2; }
 .game-shell[data-phase="success"] .success-badge { opacity: 1; transform: translate(-50%, 0) scale(1); }
+
+.mascot { position: relative; display: grid; justify-items: center; }
+.mascot-head {
+  position: relative;
+  width: 44px;
+  height: 40px;
+  border-radius: var(--radius-block);
+  background: linear-gradient(145deg, var(--mascot-head-light), var(--mascot-head));
+  box-shadow: var(--block-bevel);
+}
+.mascot-eye { position: absolute; top: 14px; width: 7px; height: 9px; border-radius: 2px; background: var(--ink); }
+.mascot-eye-left { left: 9px; }
+.mascot-eye-right { right: 9px; }
+.mascot-mouth { position: absolute; left: 50%; bottom: 7px; width: 16px; height: 6px; border-radius: 0 0 7px 7px; background: var(--ink); transform: translateX(-50%); }
+.mascot-body {
+  position: relative;
+  width: 34px;
+  height: 22px;
+  margin-top: -4px;
+  border-radius: var(--radius-block);
+  background: linear-gradient(145deg, var(--mascot-body-light), var(--mascot-body));
+  box-shadow: var(--block-bevel);
+}
+.mascot-arm { position: absolute; top: 4px; width: 9px; height: 20px; border-radius: 4px; background: var(--mascot-body); }
+.mascot-arm-left { left: -10px; transform: rotate(-34deg); transform-origin: top center; }
+.mascot-arm-right { right: -10px; transform: rotate(34deg); transform-origin: top center; }
+
+.game-stage .mascot {
+  position: absolute;
+  z-index: 3;
+  right: 8%;
+  bottom: calc(15% + min(30dvh, 270px) - 6px);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(16px) scale(.8);
+  transition: opacity var(--duration-standard) var(--ease-emphasis), transform var(--duration-standard) var(--ease-emphasis);
+}
+.game-shell[data-phase="success"] .game-stage .mascot { opacity: 1; transform: translateY(0) scale(1); }
+
+.complete-card .mascot { margin: 0 auto var(--space-5); }
 
 .status { z-index: 3; min-height: 24px; padding: 0 var(--space-8); margin: 0 0 var(--space-3); color: var(--ink-muted); font-size: .8125rem; font-weight: 700; line-height: 1.5; text-align: center; word-break: keep-all; }
 .game-shell[data-phase="retry"] .status { color: #9f4637; }
@@ -283,8 +326,6 @@ button:focus-visible {
 .complete-panel { position: absolute; z-index: 10; inset: 0; display: grid; padding: var(--space-6); place-items: center; background: rgb(49 43 40 / .42); backdrop-filter: blur(8px); }
 .complete-panel[hidden] { display: none; }
 .complete-card { width: min(100%, 380px); padding: var(--space-10) var(--space-6); text-align: center; border: 1px solid rgb(255 255 255 / .86); border-radius: var(--radius-panel); background: linear-gradient(145deg, var(--cream), #fff0ce); box-shadow: 0 24px 52px rgb(49 43 40 / .32), inset 0 1px 0 var(--white); animation: card-enter var(--duration-emphasis) var(--ease-emphasis) both; }
-.complete-check { display: grid; width: 58px; height: 58px; margin: 0 auto var(--space-5); place-items: center; border-radius: var(--radius-block); color: var(--success); background: rgb(99 183 107 / .14); box-shadow: inset -2px -2px 0 rgb(0 0 0 / .08), inset 2px 2px 0 rgb(255 255 255 / .5); }
-.complete-check svg { width: 32px; }
 .complete-card h2 { margin: 0; font-size: clamp(1.75rem, 7vw, 2.5rem); font-weight: 800; line-height: 1.16; letter-spacing: -.06em; word-break: keep-all; }
 .complete-card p { margin: var(--space-4) 0 var(--space-6); color: var(--ink-muted); font-size: .9rem; font-weight: 700; line-height: 1.65; word-break: keep-all; }
 .restart-button { min-height: 48px; width: 100%; border: 0; border-radius: var(--radius-block); color: var(--white); background: var(--ink); box-shadow: inset 0 2px 0 rgb(255 255 255 / .18), 0 8px 0 #171311; cursor: pointer; font-size: 1rem; font-weight: 800; transition: transform var(--duration-micro) var(--ease-emphasis), box-shadow var(--duration-micro) var(--ease-emphasis); }
@@ -307,6 +348,7 @@ button:focus-visible {
   .progress-dots li.is-current,
   .game-shell[data-phase="listening"] .word-wall,
   .game-shell[data-phase="success"] .word-wall,
+  .game-stage .mascot,
   .mic-button:hover .mic-disc,
   .mic-button:active .mic-disc,
   .camera-button:active,

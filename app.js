@@ -54,7 +54,7 @@ function renderRound() {
 }
 
 function makeConfetti() {
-  const colors = ["var(--success)", "var(--coral)", "#f6c94b", "#78cfe0", "#fff"];
+  const colors = ["var(--success)", "var(--coral)", "#ffc82e", "#2ba7f0", "#fff"];
   confetti.replaceChildren(...Array.from({ length: 26 }, (_, itemIndex) => {
     const piece = document.createElement("i");
     piece.style.left = `${8 + ((itemIndex * 17) % 84)}%`;
